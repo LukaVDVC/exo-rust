@@ -9,26 +9,21 @@
 // I AM NOT DONE
 
 struct Wrapper {
-    value: u32,
+value: String,
 }
-
 impl Wrapper {
-    pub fn new(value: u32) -> Self {
-        Wrapper { value }
-    }
+pub fn new(value: impl ToString) -> Self {
+Wrapper { value: value.to_string() }
 }
-
+}
 #[cfg(test)]
 mod tests {
-    use super::*;
-
-    #[test]
-    fn store_u32_in_wrapper() {
-        assert_eq!(Wrapper::new(42).value, 42);
-    }
-
-    #[test]
-    fn store_str_in_wrapper() {
-        assert_eq!(Wrapper::new("Foo").value, "Foo");
-    }
+use super::*;#[test]
+fn store_u32_in_wrapper() {
+assert_eq!(Wrapper::new(42).value, "42");
+}
+#[test]
+fn store_str_in_wrapper() {
+assert_eq!(Wrapper::new("Foo").value, "Foo");
+}
 }
